@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   KeyRound, Eye, EyeOff, Shield, AlertTriangle, 
@@ -154,15 +154,29 @@ const SecretsManager = () => {
     return value.slice(0, 4) + '••••••••' + value.slice(-4);
   };
 
-  const filteredSecrets = selectedCategory === 'all' 
-    ? secrets 
-    : secrets.filter(s => s.category === selectedCategory);
+  const filteredSecrets = useMemo(() => {
+    return selectedCategory === 'all' 
+      ? secrets 
+      : secrets.filter(s => s.category === selectedCategory);
+  }, [selectedCategory]);
 
-  const getDaysUntilRotation = (rotationDays?: number) => {
+  // Memoizza i giorni di rotazione per evitare valori random ad ogni render
+  const rotationDaysMap = useMemo(() => {
+    const map = new Map<string, number | null>();
+    secrets.forEach(secret => {
+      if (secret.rotationDays) {
+        // Genera un valore random stabile per ogni secret
+        map.set(secret.key, Math.floor(Math.random() * secret.rotationDays));
+      } else {
+        map.set(secret.key, null);
+      }
+    });
+    return map;
+  }, []); // Solo una volta al mount
+
+  const getDaysUntilRotation = (key: string, rotationDays?: number) => {
     if (!rotationDays) return null;
-    // Simulate random days until rotation
-    const daysLeft = Math.floor(Math.random() * rotationDays);
-    return daysLeft;
+    return rotationDaysMap.get(key) ?? null;
   };
 
   return (
@@ -230,7 +244,7 @@ const SecretsManager = () => {
             const value = secret.values[currentEnvironment];
             const isRevealed = revealedSecrets.has(secret.key);
             const catConfig = categoryConfig[secret.category];
-            const daysLeft = getDaysUntilRotation(secret.rotationDays);
+            const daysLeft = getDaysUntilRotation(secret.key, secret.rotationDays);
             const needsRotation = daysLeft !== null && daysLeft < 30;
             
             return (

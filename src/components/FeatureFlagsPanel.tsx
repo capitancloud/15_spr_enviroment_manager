@@ -1,11 +1,19 @@
-import { getAllFeatureFlags } from '@/config/featureFlags';
-import { getCurrentEnvironment } from '@/config/environment';
+import { useMemo } from 'react';
+import { featureFlags } from '@/config/featureFlags';
+import { useEnvironment } from '@/contexts/EnvironmentContext';
 import { User, Flag, Users, Calendar, ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const FeatureFlagsPanel = () => {
-  const flags = getAllFeatureFlags();
-  const currentEnv = getCurrentEnvironment();
+  const { currentEnvironment } = useEnvironment();
+  
+  // Memoizza i flag con lo stato corrente per evitare ricalcoli ad ogni render
+  const flags = useMemo(() => {
+    return featureFlags.map(flag => ({
+      ...flag,
+      currentlyEnabled: flag.enabled[currentEnvironment],
+    }));
+  }, [currentEnvironment]);
 
   return (
     <div className="glass-card p-6 animate-fade-up-delay-2">
@@ -16,7 +24,7 @@ const FeatureFlagsPanel = () => {
         <div>
           <h2 className="text-xl font-semibold gradient-text">Feature Flags</h2>
           <p className="text-sm text-muted-foreground">
-            Stato in ambiente: <span className="text-primary">{currentEnv}</span>
+            Stato in ambiente: <span className="text-primary">{currentEnvironment}</span>
           </p>
         </div>
       </div>

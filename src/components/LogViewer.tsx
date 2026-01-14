@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Terminal, Trash2, Pause, Play, AlertCircle, Info, AlertTriangle, Bug } from 'lucide-react';
 import { useEnvironment } from '@/contexts/EnvironmentContext';
@@ -88,7 +88,6 @@ const LogViewer = () => {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [filter, setFilter] = useState<LogLevel | 'all'>('all');
-  const logsEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Get minimum log level based on environment config
@@ -97,8 +96,9 @@ const LogViewer = () => {
 
   // Auto-scroll to bottom
   useEffect(() => {
-    if (isStreaming && logsEndRef.current) {
-      logsEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (isStreaming && containerRef.current) {
+      // Usa scrollTop invece di scrollIntoView per evitare lo scroll della pagina
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
   }, [logs, isStreaming]);
 
@@ -120,13 +120,15 @@ const LogViewer = () => {
     return () => clearInterval(interval);
   }, [isStreaming]);
 
-  // Filter logs based on environment log level and user filter
-  const filteredLogs = logs.filter(log => {
-    const logPriority = logLevelPriority[log.level];
-    const passesEnvFilter = logPriority >= minPriority;
-    const passesUserFilter = filter === 'all' || log.level === filter;
-    return passesEnvFilter && passesUserFilter;
-  });
+  // Filter logs based on environment log level and user filter (memoized)
+  const filteredLogs = useMemo(() => {
+    return logs.filter(log => {
+      const logPriority = logLevelPriority[log.level];
+      const passesEnvFilter = logPriority >= minPriority;
+      const passesUserFilter = filter === 'all' || log.level === filter;
+      return passesEnvFilter && passesUserFilter;
+    });
+  }, [logs, filter, minPriority]);
 
   // Count logs by level
   const logCounts = logs.reduce((acc, log) => {
@@ -298,7 +300,6 @@ const LogViewer = () => {
                   </div>
                 );
               })}
-              <div ref={logsEndRef} />
             </div>
           )}
         </div>
