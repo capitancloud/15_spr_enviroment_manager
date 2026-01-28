@@ -322,6 +322,64 @@ const CICDDiagram = () => {
             </div>
           </div>
         </div>
+
+        {/* Spiegazione per principianti */}
+        <div className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            🤔 Cos'è CI/CD?
+          </h4>
+          <p className="text-sm text-muted-foreground mb-3">
+            <strong className="text-foreground">CI/CD</strong> sta per "Continuous Integration / Continuous Deployment". 
+            È un sistema automatico che prende il codice scritto dagli sviluppatori e lo porta online, 
+            passando per controlli e test. Come una <em>catena di montaggio</em> per il software!
+          </p>
+          
+          <div className="grid gap-2 text-sm">
+            <div className="flex items-start gap-2">
+              <span>📝</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Commit:</strong> Lo sviluppatore salva le modifiche nel repository (tipo Git)
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🔨</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Build:</strong> Il codice viene compilato e preparato
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🧪</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Test:</strong> Test automatici verificano che tutto funzioni
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>📦</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Package:</strong> L'app viene impacchettata (es. container Docker)
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🚀</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Deploy:</strong> L'app viene caricata sul server
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>👀</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Monitor:</strong> Si controlla che tutto funzioni correttamente
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-3 p-3 rounded-lg bg-accent/10 border border-accent/20">
+            <p className="text-xs text-accent">
+              💡 <strong>Perché è utile?</strong> Automatizza tutto! Ogni volta che uno sviluppatore fa una modifica, 
+              il sistema la testa e la pubblica automaticamente. Meno errori umani, rilasci più veloci!
+            </p>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

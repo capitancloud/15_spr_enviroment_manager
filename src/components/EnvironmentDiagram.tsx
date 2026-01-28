@@ -114,8 +114,38 @@ const EnvironmentDiagram = () => {
         </div>
       </div>
 
+      {/* Spiegazione per principianti */}
+      <div className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
+        <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+          🤔 Perché 3 ambienti diversi?
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Immagina di costruire una casa. Non la costruisci direttamente dove vivrai, ma prima fai delle prove!
+        </p>
+        <div className="grid gap-2 text-sm">
+          <div className="flex items-start gap-2">
+            <span>🔧</span>
+            <span className="text-muted-foreground">
+              <strong className="text-foreground">Development:</strong> È il tuo "laboratorio". Provi, sbagli, ripari. Nessun cliente lo vede.
+            </span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>🧪</span>
+            <span className="text-muted-foreground">
+              <strong className="text-foreground">Staging:</strong> Una copia quasi identica al "prodotto finito". Il team testa tutto prima di mostrarlo ai clienti.
+            </span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>🏠</span>
+            <span className="text-muted-foreground">
+              <strong className="text-foreground">Production:</strong> La "casa abitata". Qui ci sono i clienti veri. Tutto deve funzionare perfettamente!
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Config flow explanation */}
-      <div className="mt-6 p-4 rounded-lg bg-accent/5 border border-accent/20">
+      <div className="mt-4 p-4 rounded-lg bg-accent/5 border border-accent/20">
         <p className="text-sm text-muted-foreground">
           <span className="text-accent font-medium">🔄 Flusso:</span> Le variabili d'ambiente vengono 
           iniettate durante il build/deploy. Ogni ambiente ha il suo file <code className="font-mono text-accent">.env</code> con 

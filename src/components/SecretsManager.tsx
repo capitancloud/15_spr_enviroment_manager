@@ -375,14 +375,42 @@ const SecretsManager = () => {
           </div>
         </div>
 
-        {/* Info note */}
-        <div className="flex items-start gap-3 p-3 rounded-lg bg-primary/5 border border-primary/20 text-sm">
-          <Info className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-          <p className="text-muted-foreground">
-            Le chiavi <strong className="text-foreground">pubbliche</strong> (come Stripe Publishable Key) 
-            possono essere esposte nel frontend. Le chiavi <strong className="text-foreground">private</strong> devono 
-            restare solo sul server (edge functions, backend).
+        {/* Spiegazione per principianti */}
+        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            🤔 Cosa sono i "Secrets"?
+          </h4>
+          <p className="text-sm text-muted-foreground mb-3">
+            I <strong className="text-foreground">secrets</strong> sono informazioni sensibili che l'app usa per funzionare: 
+            password, chiavi API, token di accesso. Sono come le <em>chiavi di casa</em> - fondamentali ma da tenere al sicuro!
           </p>
+          
+          <div className="grid gap-2 text-sm mb-4">
+            <div className="flex items-start gap-2 p-2 rounded bg-destructive/10">
+              <Lock className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-destructive">Chiavi Private:</strong>
+                <span className="text-muted-foreground"> Come la chiave della cassaforte. Solo il server le conosce. 
+                MAI nel codice frontend!</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 p-2 rounded bg-success/10">
+              <Unlock className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-success">Chiavi Pubbliche:</strong>
+                <span className="text-muted-foreground"> Come il numero civico. Possono essere viste da tutti, 
+                servono solo a identificare, non ad accedere.</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+            <p className="text-xs text-accent">
+              💡 <strong>Esempio pratico:</strong> Stripe ha due chiavi. La "Publishable Key" (pk_...) può stare nel browser, 
+              serve solo a identificare il tuo account. La "Secret Key" (sk_...) deve stare SOLO sul server, 
+              perché con quella si possono fare pagamenti!
+            </p>
+          </div>
         </div>
       </CardContent>
     </Card>

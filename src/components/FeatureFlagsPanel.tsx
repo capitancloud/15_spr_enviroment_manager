@@ -123,13 +123,48 @@ const FeatureFlagsPanel = () => {
         ))}
       </div>
 
-      {/* Nota educativa */}
-      <div className="mt-6 p-4 rounded-lg bg-primary/5 border border-primary/20">
-        <p className="text-sm text-muted-foreground">
-          <span className="text-primary font-medium">💡 Nota:</span> I feature flags permettono di 
-          controllare le funzionalità senza modificare il codice. Ideali per A/B testing, 
-          rilasci graduali e kill switch di emergenza.
-        </p>
+      {/* Spiegazione per principianti */}
+      <div className="mt-6 space-y-4">
+        {/* Cos'è un Feature Flag */}
+        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            🤔 Cosa sono i Feature Flags?
+          </h4>
+          <p className="text-sm text-muted-foreground mb-3">
+            I <strong className="text-foreground">Feature Flags</strong> (o "interruttori di funzionalità") sono come 
+            degli <em>interruttori della luce</em> per le funzioni dell'app. Permettono di accendere o spegnere 
+            una feature senza modificare il codice!
+          </p>
+          <div className="grid gap-2 text-sm">
+            <div className="flex items-start gap-2">
+              <span>🎯</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Rilascio graduale:</strong> Attivi una nuova feature solo per il 10% degli utenti, poi 50%, poi 100%
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🔴</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Kill Switch:</strong> Se una feature causa problemi, la disattivi istantaneamente
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🧪</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">A/B Testing:</strong> Mostri versioni diverse a utenti diversi per vedere quale funziona meglio
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Analogia */}
+        <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent font-medium">💡 Analogia:</span> Pensa a un ristorante che vuole testare un nuovo piatto. 
+            Invece di aggiungerlo al menu per tutti, lo propone prima solo ad alcuni tavoli (rollout %). 
+            Se piace, lo estende a tutti. Se no, lo toglie senza aver stampato nuovi menu!
+          </p>
+        </div>
       </div>
     </div>
   );
