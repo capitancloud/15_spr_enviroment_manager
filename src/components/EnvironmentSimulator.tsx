@@ -183,13 +183,50 @@ const EnvironmentSimulator = () => {
         </div>
       </div>
 
-      {/* Educational Note */}
-      <div className="mt-6 p-3 rounded-lg bg-accent/10 border border-accent/20">
-        <p className="text-xs text-accent">
-          ⚠️ <strong>Nota:</strong> In produzione, l'ambiente è determinato al momento del build 
-          tramite variabili d'ambiente (es. <code className="font-mono">VITE_APP_ENV</code>). 
-          Non può essere modificato a runtime!
-        </p>
+      {/* Spiegazione per principianti */}
+      <div className="mt-6 space-y-4">
+        {/* Cos'è un ambiente */}
+        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            🤔 Cosa sono gli "ambienti"?
+          </h4>
+          <p className="text-sm text-muted-foreground mb-3">
+            Un <strong className="text-foreground">ambiente</strong> è una "versione" dell'applicazione con configurazioni specifiche. 
+            Immagina di avere 3 copie della stessa app, ognuna configurata diversamente:
+          </p>
+          <div className="grid gap-2 text-sm">
+            <div className="flex items-start gap-2 p-2 rounded bg-primary/10">
+              <span className="text-primary">🔧</span>
+              <div>
+                <strong className="text-primary">Development:</strong> 
+                <span className="text-muted-foreground"> Sul tuo computer, per sviluppare e testare</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 p-2 rounded bg-warning/10">
+              <span className="text-warning">🧪</span>
+              <div>
+                <strong className="text-warning">Staging:</strong> 
+                <span className="text-muted-foreground"> Server di test, per verificare prima del rilascio</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 p-2 rounded bg-success/10">
+              <span className="text-success">🚀</span>
+              <div>
+                <strong className="text-success">Production:</strong> 
+                <span className="text-muted-foreground"> L'app vera usata dai clienti reali</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Nota tecnica */}
+        <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+          <p className="text-xs text-accent">
+            ⚠️ <strong>Nota tecnica:</strong> Questo è un <em>simulatore didattico</em>. In un'app reale, 
+            l'ambiente viene deciso al momento della compilazione (build) e non può essere cambiato dall'utente. 
+            È il server che "sa" in quale ambiente sta girando.
+          </p>
+        </div>
       </div>
     </div>
   );

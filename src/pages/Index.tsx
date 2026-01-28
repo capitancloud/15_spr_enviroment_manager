@@ -22,10 +22,35 @@ const Index = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="gradient-text">Environment Manager</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Un'applicazione didattica per comprendere la gestione degli ambienti, 
               le variabili di configurazione e i feature flags nello sviluppo software.
             </p>
+            
+            {/* Intro per principianti */}
+            <div className="max-w-3xl mx-auto p-6 rounded-2xl bg-gradient-to-br from-primary/10 via-accent/5 to-success/10 border border-primary/20 text-left">
+              <h2 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                👋 Nuovo a questi concetti?
+              </h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Questa app ti insegna come le applicazioni professionali gestiscono le <strong className="text-foreground">configurazioni</strong>. 
+                Ogni sezione ha spiegazioni semplici con analogie della vita reale. Nessuna esperienza richiesta!
+              </p>
+              <div className="grid sm:grid-cols-3 gap-3 text-sm">
+                <div className="p-3 rounded-lg bg-background/50 border border-border">
+                  <span className="text-primary font-medium">🌍 Ambienti</span>
+                  <p className="text-xs text-muted-foreground mt-1">Perché esistono Development, Staging e Production</p>
+                </div>
+                <div className="p-3 rounded-lg bg-background/50 border border-border">
+                  <span className="text-accent font-medium">🚩 Feature Flags</span>
+                  <p className="text-xs text-muted-foreground mt-1">Come attivare/disattivare funzioni senza toccare il codice</p>
+                </div>
+                <div className="p-3 rounded-lg bg-background/50 border border-border">
+                  <span className="text-success font-medium">🔐 Sicurezza</span>
+                  <p className="text-xs text-muted-foreground mt-1">Come proteggere password e chiavi API</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Main content grid */}

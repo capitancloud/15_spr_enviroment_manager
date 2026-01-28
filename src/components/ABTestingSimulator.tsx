@@ -383,6 +383,48 @@ const ABTestingSimulator = () => {
             </p>
           </div>
         )}
+
+        {/* Spiegazione per principianti */}
+        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            🤔 Cos'è l'A/B Testing?
+          </h4>
+          <p className="text-sm text-muted-foreground mb-3">
+            L'<strong className="text-foreground">A/B Testing</strong> è un esperimento: mostri due (o più) versioni diverse 
+            della stessa cosa a gruppi diversi di utenti, e vedi quale funziona meglio!
+          </p>
+          
+          <div className="grid gap-2 text-sm mb-3">
+            <div className="flex items-start gap-2">
+              <span>🎨</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Esempio:</strong> Il bottone "Compra" è più efficace verde o blu? 
+                Mostralo verde a metà utenti e blu all'altra metà, poi conta chi clicca di più!
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>📊</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Conversione:</strong> Quanti utenti "fanno l'azione" (click, acquisto, iscrizione). 
+                Es: 100 utenti vedono il bottone, 5 cliccano = 5% di conversione.
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🎚️</span>
+              <span className="text-muted-foreground">
+                <strong className="text-foreground">Rollout %:</strong> Quanti utenti partecipano al test. 
+                50% = solo metà degli utenti vede le varianti, gli altri vedono la versione normale.
+              </span>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+            <p className="text-xs text-accent">
+              💡 <strong>Perché 100 utenti minimi?</strong> Con pochi dati, i risultati potrebbero essere casuali. 
+              Servono abbastanza "prove" per essere sicuri che una variante sia davvero migliore!
+            </p>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

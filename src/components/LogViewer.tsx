@@ -323,6 +323,39 @@ const LogViewer = () => {
             )}
           </div>
         </div>
+
+        {/* Spiegazione per principianti */}
+        <div className="p-4 border-t border-white/10 bg-muted/5">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2 text-sm">
+            🤔 Cosa sono i Log?
+          </h4>
+          <p className="text-xs text-muted-foreground mb-3">
+            I <strong className="text-foreground">log</strong> sono messaggi che l'applicazione scrive per "raccontare" cosa sta facendo. 
+            Sono come un <em>diario di bordo</em> che aiuta gli sviluppatori a capire cosa succede e trovare errori.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+            <div className="p-2 rounded bg-muted/30">
+              <span className="text-muted-foreground font-medium">DEBUG</span>
+              <p className="text-muted-foreground/70 mt-1">Dettagli tecnici per sviluppatori</p>
+            </div>
+            <div className="p-2 rounded bg-primary/10">
+              <span className="text-primary font-medium">INFO</span>
+              <p className="text-muted-foreground/70 mt-1">Eventi normali dell'app</p>
+            </div>
+            <div className="p-2 rounded bg-warning/10">
+              <span className="text-warning font-medium">WARN</span>
+              <p className="text-muted-foreground/70 mt-1">Qualcosa di strano, ma non grave</p>
+            </div>
+            <div className="p-2 rounded bg-destructive/10">
+              <span className="text-destructive font-medium">ERROR</span>
+              <p className="text-muted-foreground/70 mt-1">Qualcosa è andato storto!</p>
+            </div>
+          </div>
+          <p className="text-xs text-accent mt-3">
+            💡 <strong>Perché filtrare?</strong> In produzione vedi solo gli errori per non essere sommerso da messaggi. 
+            In development vedi tutto per debuggare!
+          </p>
+        </div>
       </CardContent>
     </Card>
   );
