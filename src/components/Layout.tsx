@@ -1,10 +1,20 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { EnvironmentProvider } from "@/contexts/EnvironmentContext";
+import { useAuth } from "@/contexts/AuthContext";
 import EnvironmentBadge from "@/components/EnvironmentBadge";
 import { Outlet } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function Layout() {
+  const { logout } = useAuth();
+
   return (
     <EnvironmentProvider>
       <SidebarProvider>
@@ -20,7 +30,24 @@ export default function Layout() {
                   Environment Manager
                 </h1>
               </div>
-              <EnvironmentBadge />
+              <div className="flex items-center gap-3">
+                <EnvironmentBadge />
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button 
+                      variant="ghost" 
+                      size="icon"
+                      onClick={logout}
+                      className="text-muted-foreground hover:text-destructive"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Esci</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
             </header>
 
             {/* Main content */}
