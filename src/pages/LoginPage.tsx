@@ -56,11 +56,6 @@ export default function LoginPage() {
             </CardDescription>
           </div>
 
-          {/* Info sulla sicurezza */}
-          <div className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 border border-border text-sm text-muted-foreground">
-            <Lock className="w-4 h-4 flex-shrink-0 text-primary" />
-            <span>Il codice viene verificato tramite hash SHA-256 per la tua sicurezza</span>
-          </div>
         </CardHeader>
 
         <CardContent>
@@ -116,30 +111,6 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {/* Spiegazione didattica */}
-          <div className="mt-6 pt-6 border-t border-border">
-            <h4 className="font-medium text-sm mb-3 flex items-center gap-2">
-              🔐 Come funziona l'autenticazione?
-            </h4>
-            <ul className="text-xs text-muted-foreground space-y-2">
-              <li className="flex items-start gap-2">
-                <span className="text-primary">1.</span>
-                <span>Inserisci il codice segreto nel campo sopra</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">2.</span>
-                <span>Il codice viene trasformato in un <strong className="text-foreground">hash</strong> (impronta digitale unica)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">3.</span>
-                <span>L'hash viene confrontato con quello memorizzato (mai il codice in chiaro!)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">4.</span>
-                <span>Se corrispondono, l'accesso è garantito ✓</span>
-              </li>
-            </ul>
-          </div>
         </CardContent>
       </Card>
 
