@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Lock, Eye, EyeOff, KeyRound, AlertCircle, Settings } from 'lucide-react';
+import { Lock, Eye, EyeOff, KeyRound, AlertCircle } from 'lucide-react';
+import superProgrammatoreLogo from '@/assets/super-programmatore-logo.png';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -45,8 +46,12 @@ export default function LoginPage() {
 
       <Card className={`w-full max-w-md relative animate-fade-up ${shake ? 'animate-shake' : ''}`}>
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-primary">
-            <Settings className="w-8 h-8 text-primary-foreground animate-spin" style={{ animationDuration: '8s' }} />
+          <div className="mx-auto">
+            <img 
+              src={superProgrammatoreLogo} 
+              alt="Super Programmatore Logo" 
+              className="w-48 h-auto mx-auto drop-shadow-lg"
+            />
           </div>
           
           <div>
